@@ -1,111 +1,47 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Free online calculators: EMI, BMI, Age, PF and Salary calculators.">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>EasyCalc Tools - Free Online Calculators</title>
+<meta name="description" content="Free EMI, BMI, age, PF, salary, SIP, FD, GST, percentage and simple interest calculators.">
 <style>
 *{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f5f7fb;color:#172033}
-header{background:#163b70;color:white;padding:28px 16px;text-align:center}
-header h1{margin:0 0 8px;font-size:30px} header p{margin:0;opacity:.9}
-nav{background:white;padding:12px;text-align:center;box-shadow:0 2px 8px #0001;position:sticky;top:0;z-index:5}
-nav a{margin:0 10px;color:#163b70;text-decoration:none;font-weight:bold;font-size:14px}
-.container{max-width:1050px;margin:28px auto;padding:0 16px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:20px}
-.card{background:white;border-radius:14px;padding:22px;box-shadow:0 4px 18px #0000000d}
-.card h2{margin-top:0;color:#163b70;font-size:21px}
-label{display:block;margin:12px 0 6px;font-weight:bold;font-size:14px}
-input{width:100%;padding:12px;border:1px solid #ccd3df;border-radius:8px;font-size:16px}
-button{margin-top:16px;width:100%;padding:12px;border:0;border-radius:8px;background:#1769e0;color:white;font-size:16px;font-weight:bold;cursor:pointer}
-button:hover{background:#0f55bb}.result{margin-top:16px;background:#eef5ff;border-radius:9px;padding:14px;font-weight:bold;line-height:1.6}
-footer{text-align:center;padding:30px;color:#667085;font-size:13px}
-.small{font-size:12px;color:#667085}
-</style>
-</head>
-<body>
-<header><h1>EasyCalc Tools</h1><p>Free, simple and mobile-friendly online calculators</p></header>
-<nav>
-<a href="#emi">EMI</a><a href="#bmi">BMI</a><a href="#age">Age</a><a href="#pf">PF</a><a href="#salary">Salary</a>
-</nav>
-<div class="container">
+header{background:#163b70;color:#fff;text-align:center;padding:30px 15px}header h1{margin:0 0 8px}
+nav{background:#fff;text-align:center;padding:12px;position:sticky;top:0;box-shadow:0 2px 8px #0001}nav a{margin:0 7px;color:#163b70;text-decoration:none;font-weight:bold;font-size:13px}
+main{max-width:1100px;margin:25px auto;padding:0 15px}.intro,.card{background:#fff;border-radius:14px;padding:20px;box-shadow:0 4px 18px #0000000d}.intro{margin-bottom:20px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:20px}.card h2{color:#163b70;margin-top:0}
+label{display:block;font-weight:bold;font-size:14px;margin:10px 0 5px}input,select{width:100%;padding:11px;border:1px solid #ccd3df;border-radius:8px;font-size:16px}
+button{width:100%;padding:12px;margin-top:14px;border:0;border-radius:8px;background:#1769e0;color:#fff;font-size:16px;font-weight:bold}
+.result{margin-top:14px;padding:13px;background:#eef5ff;border-radius:8px;line-height:1.6;font-weight:bold}.small{font-size:12px;color:#667085}
+footer{text-align:center;padding:30px;color:#667085}footer a{margin:0 8px;color:#1769e0}
+</style></head><body>
+<header><h1>EasyCalc Tools</h1><p>Free, simple and mobile-friendly calculators</p></header>
+<nav><a href="#emi">EMI</a><a href="#bmi">BMI</a><a href="#age">Age</a><a href="#pf">PF</a><a href="#salary">Salary</a><a href="#sip">SIP</a><a href="#fd">FD</a><a href="#gst">GST</a><a href="#percent">%</a><a href="#interest">Interest</a></nav>
+<main><div class="intro"><h2>Free Online Calculators</h2><p>Calculate common financial, health and mathematical values quickly. Results are estimates and should be verified before important decisions.</p></div>
 <div class="grid">
-
-<section class="card" id="emi">
-<h2>EMI Calculator</h2>
-<label>Loan Amount (₹)</label><input id="loan" type="number" value="500000">
-<label>Annual Interest Rate (%)</label><input id="rate" type="number" value="9" step="0.01">
-<label>Loan Tenure (Years)</label><input id="years" type="number" value="5">
-<button onclick="emi()">Calculate EMI</button><div class="result" id="emiResult">Enter details and calculate.</div>
-</section>
-
-<section class="card" id="bmi">
-<h2>BMI Calculator</h2>
-<label>Height (cm)</label><input id="height" type="number" value="170">
-<label>Weight (kg)</label><input id="weight" type="number" value="70">
-<button onclick="bmi()">Calculate BMI</button><div class="result" id="bmiResult">Enter details and calculate.</div>
-</section>
-
-<section class="card" id="age">
-<h2>Age Calculator</h2>
-<label>Date of Birth</label><input id="dob" type="date">
-<button onclick="age()">Calculate Age</button><div class="result" id="ageResult">Select your date of birth.</div>
-</section>
-
-<section class="card" id="pf">
-<h2>PF Calculator</h2>
-<p class="small">Estimate employee and employer PF contributions using basic wage.</p>
-<label>Basic Salary (₹/month)</label><input id="basic" type="number" value="15000">
-<label>Employee PF Rate (%)</label><input id="epf" type="number" value="12">
-<label>Employer PF Rate (%)</label><input id="erpf" type="number" value="12">
-<button onclick="pf()">Calculate PF</button><div class="result" id="pfResult">Enter details and calculate.</div>
-</section>
-
-<section class="card" id="salary">
-<h2>Salary Calculator</h2>
-<label>Annual CTC (₹)</label><input id="ctc" type="number" value="600000">
-<label>Estimated Annual Deductions (₹)</label><input id="ded" type="number" value="60000">
-<button onclick="salary()">Calculate Salary</button><div class="result" id="salaryResult">Enter details and calculate.</div>
-</section>
-
-</div>
-</div>
-<footer>© 2026 EasyCalc Tools · Free calculators for everyday use</footer>
-
+<div class="card" id="emi"><h2>EMI Calculator</h2><label>Loan Amount (₹)</label><input id="loan" value="500000" type="number"><label>Annual Interest Rate (%)</label><input id="rate" value="9" type="number" step=".01"><label>Tenure (Years)</label><input id="years" value="5" type="number"><button onclick="calcEMI()">Calculate EMI</button><div class="result" id="emiOut">Enter details and calculate.</div></div>
+<div class="card" id="bmi"><h2>BMI Calculator</h2><label>Height (cm)</label><input id="height" value="170" type="number"><label>Weight (kg)</label><input id="weight" value="70" type="number"><button onclick="calcBMI()">Calculate BMI</button><div class="result" id="bmiOut">Enter details and calculate.</div></div>
+<div class="card" id="age"><h2>Age Calculator</h2><label>Date of Birth</label><input id="dob" type="date"><button onclick="calcAge()">Calculate Age</button><div class="result" id="ageOut">Select your date of birth.</div></div>
+<div class="card" id="pf"><h2>PF Calculator</h2><p class="small">Estimate contributions using the rates you enter.</p><label>Basic Salary (₹/month)</label><input id="basic" value="15000" type="number"><label>Employee PF Rate (%)</label><input id="epf" value="12" type="number"><label>Employer PF Rate (%)</label><input id="erpf" value="12" type="number"><button onclick="calcPF()">Calculate PF</button><div class="result" id="pfOut">Enter details and calculate.</div></div>
+<div class="card" id="salary"><h2>Salary Calculator</h2><label>Annual CTC (₹)</label><input id="ctc" value="600000" type="number"><label>Estimated Annual Deductions (₹)</label><input id="ded" value="60000" type="number"><button onclick="calcSalary()">Calculate Salary</button><div class="result" id="salaryOut">Enter details and calculate.</div></div>
+<div class="card" id="sip"><h2>SIP Calculator</h2><label>Monthly Investment (₹)</label><input id="sipAmt" value="5000" type="number"><label>Expected Annual Return (%)</label><input id="sipRate" value="12" type="number" step=".1"><label>Period (Years)</label><input id="sipYears" value="10" type="number"><button onclick="calcSIP()">Calculate SIP</button><div class="result" id="sipOut">Enter details and calculate.</div></div>
+<div class="card" id="fd"><h2>FD Calculator</h2><label>Deposit Amount (₹)</label><input id="fdAmt" value="100000" type="number"><label>Annual Interest Rate (%)</label><input id="fdRate" value="7" type="number" step=".01"><label>Tenure (Years)</label><input id="fdYears" value="5" type="number"><button onclick="calcFD()">Calculate FD</button><div class="result" id="fdOut">Enter details and calculate.</div></div>
+<div class="card" id="gst"><h2>GST Calculator</h2><label>Amount Before GST (₹)</label><input id="gstAmt" value="10000" type="number"><label>GST Rate (%)</label><select id="gstRate"><option>5</option><option>12</option><option selected>18</option><option>28</option></select><button onclick="calcGST()">Calculate GST</button><div class="result" id="gstOut">Enter details and calculate.</div></div>
+<div class="card" id="percent"><h2>Percentage Calculator</h2><label>Value</label><input id="pValue" value="20" type="number"><label>Percentage (%)</label><input id="pRate" value="15" type="number"><button onclick="calcPercent()">Calculate</button><div class="result" id="percentOut">Enter details and calculate.</div></div>
+<div class="card" id="interest"><h2>Simple Interest Calculator</h2><label>Principal (₹)</label><input id="siP" value="100000" type="number"><label>Annual Rate (%)</label><input id="siR" value="8" type="number"><label>Time (Years)</label><input id="siT" value="3" type="number"><button onclick="calcSI()">Calculate</button><div class="result" id="siOut">Enter details and calculate.</div></div>
+</div></main>
+<footer>© 2026 EasyCalc Tools<br><a href="about.html">About</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy Policy</a><a href="disclaimer.html">Disclaimer</a></footer>
 <script>
 const money=n=>new Intl.NumberFormat('en-IN',{style:'currency',currency:'INR',maximumFractionDigits:0}).format(n);
-
-function emi(){
- let P=+document.getElementById('loan').value,r=+document.getElementById('rate').value/1200,n=+document.getElementById('years').value*12;
- if(!P||!n||r<0)return;
- let e=r===0?P/n:P*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);
- document.getElementById('emiResult').innerHTML=`Monthly EMI: ${money(e)}<br>Total Payment: ${money(e*n)}<br>Total Interest: ${money(e*n-P)}`;
-}
-function bmi(){
- let h=+document.getElementById('height').value/100,w=+document.getElementById('weight').value;
- if(!h||!w)return;
- let b=w/(h*h), cat=b<18.5?'Underweight':b<25?'Normal':b<30?'Overweight':'Obesity';
- document.getElementById('bmiResult').innerHTML=`BMI: ${b.toFixed(1)}<br>Category: ${cat}`;
-}
-function age(){
- let d=new Date(document.getElementById('dob').value),t=new Date();
- if(isNaN(d))return;
- let y=t.getFullYear()-d.getFullYear(),m=t.getMonth()-d.getMonth(),day=t.getDate()-d.getDate();
- if(day<0){m--;day+=new Date(t.getFullYear(),t.getMonth(),0).getDate()}
- if(m<0){y--;m+=12}
- document.getElementById('ageResult').innerHTML=`Age: ${y} years, ${m} months, ${day} days`;
-}
-function pf(){
- let b=+document.getElementById('basic').value,e=+document.getElementById('epf').value,er=+document.getElementById('erpf').value;
- let emp=b*e/100,empr=b*er/100;
- document.getElementById('pfResult').innerHTML=`Employee PF: ${money(emp)} / month<br>Employer PF: ${money(empr)} / month<br>Total: ${money(emp+empr)} / month`;
-}
-function salary(){
- let c=+document.getElementById('ctc').value,d=+document.getElementById('ded').value;
- let annual=Math.max(0,c-d);
- document.getElementById('salaryResult').innerHTML=`Estimated Annual Take-home: ${money(annual)}<br>Estimated Monthly: ${money(annual/12)}<br><span class="small">Actual take-home depends on tax, PF, insurance and other components.</span>`;
-}
-document.getElementById('dob').value=new Date().toISOString().split('T')[0];
-</script>
-</body>
-</html>
+function calcEMI(){let P=+loan.value,r=+rate.value/1200,n=+years.value*12;if(!P||!n)return;let e=r?P*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1):P/n;emiOut.innerHTML=`Monthly EMI: ${money(e)}<br>Total Payment: ${money(e*n)}<br>Total Interest: ${money(e*n-P)}`}
+function calcBMI(){let h=+height.value/100,w=+weight.value;if(!h||!w)return;let b=w/(h*h),c=b<18.5?'Underweight':b<25?'Normal':b<30?'Overweight':'Obesity';bmiOut.innerHTML=`BMI: ${b.toFixed(1)}<br>Category: ${c}`}
+function calcAge(){let d=new Date(dob.value),t=new Date;if(isNaN(d))return;let y=t.getFullYear()-d.getFullYear(),m=t.getMonth()-d.getMonth(),day=t.getDate()-d.getDate();if(day<0){m--;day+=new Date(t.getFullYear(),t.getMonth(),0).getDate()}if(m<0){y--;m+=12}ageOut.innerHTML=`Age: ${y} years, ${m} months, ${day} days`}
+function calcPF(){let b=+basic.value,a=b*+epf.value/100,z=b*+erpf.value/100;pfOut.innerHTML=`Employee PF: ${money(a)} / month<br>Employer PF: ${money(z)} / month<br>Total: ${money(a+z)} / month`}
+function calcSalary(){let a=Math.max(0,+ctc.value-+ded.value);salaryOut.innerHTML=`Estimated Annual Take-home: ${money(a)}<br>Estimated Monthly: ${money(a/12)}<br><span class="small">Actual take-home depends on tax, PF, insurance and other components.</span>`}
+function calcSIP(){let p=+sipAmt.value,r=+sipRate.value/1200,n=+sipYears.value*12;if(!p||!n)return;let v=r?p*((Math.pow(1+r,n)-1)/r)*(1+r):p*n;sipOut.innerHTML=`Invested: ${money(p*n)}<br>Estimated Value: ${money(v)}<br>Estimated Returns: ${money(v-p*n)}`}
+function calcFD(){let p=+fdAmt.value,v=p*Math.pow(1+ +fdRate.value/100,+fdYears.value);fdOut.innerHTML=`Estimated Maturity: ${money(v)}<br>Estimated Interest: ${money(v-p)}`}
+function calcGST(){let a=+gstAmt.value,g=a*+gstRate.value/100;gstOut.innerHTML=`GST Amount: ${money(g)}<br>Total Including GST: ${money(a+g)}`}
+function calcPercent(){percentOut.innerHTML=`${pRate.value}% of ${pValue.value} = ${(+pValue.value*+pRate.value/100).toFixed(2)}`}
+function calcSI(){let p=+siP.value,i=p*+siR.value*+siT.value/100;siOut.innerHTML=`Simple Interest: ${money(i)}<br>Total Amount: ${money(p+i)}`}
+dob.value=new Date().toISOString().split('T')[0];
+</script></body></html>
